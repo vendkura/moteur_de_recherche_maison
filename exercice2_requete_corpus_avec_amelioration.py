@@ -16,10 +16,23 @@ def chercher_mots_composes(mot, index):
     mots = mot.split() if isinstance(mot,str) else mot
     resultats = {}
     print(f"mots divises:{mots}")
+
+    #Initialize a set to collect files containing any of the words
+    tous_fichiers = set()
+    # Initialize a dictionary to hold sets of files for each word
+    fichiers_par_mot = {}
+    #
+    tous_fichiers = set()
+    #
     fichiers = set()
     for mot in mots:
         temp_fichier = chercher_mots_simple(mot, index)
+
         if temp_fichier:
+            #
+            fichiers_par_mot[mot] = temp_fichier
+            #
+            tous_fichiers.update(temp_fichier)
             if mot in resultats:
                 resultats[mot] = resultats[mot].union(temp_fichier)
             else:
@@ -30,6 +43,6 @@ def chercher_mots_composes(mot, index):
         # resultats[mot] = fichiers 
     return resultats
 
-mot_a_chercher = ["lecoq","femme","homme","chien"]
+mot_a_chercher = ["documents","femme","homme","chien"]
 
 print(chercher_mots_composes(mot_a_chercher, corpus))
