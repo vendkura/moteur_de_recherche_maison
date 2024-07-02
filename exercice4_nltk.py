@@ -3,10 +3,6 @@ import re
 import os
 from nltk.tokenize import word_tokenize
 
-# Assurez-vous d'avoir téléchargé les ressources nécessaires de NLTK
-# import nltk
-# nltk.download('punkt')
-
 # Chargement du corpus
 with open("index.json", "r") as fichier_json:
     corpus = json.load(fichier_json)
@@ -22,7 +18,7 @@ def chercher_mots_simple(mot, index):
 
 def chercher_mots_composes(mots, index):
 
-    # Utilisation de word_tokenize pour un découpage plus complexe
+    
     mots = word_tokenize(mots) if isinstance(mots, str) else mots
     resultats = {}
     for mot in mots:

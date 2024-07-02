@@ -20,10 +20,10 @@ def chercher_mots(mot, index):
     
 
 index = {}
-for chemin in glob.glob("europarl/europarl/fr/*")[:5]:
+for chemin in glob.glob("europarl/europarl/fr/*"):
     chaine = lire_fichier(chemin)
     mots = decouper_mots(chaine)
-    print(f"[INFO] Ajout des mots trouvers dans l'index ")
+    print(f"[INFO] Ajout des mots trouvés dans l'index")
     for mot in mots:
         if mot not in index:
             index[mot] = set()
